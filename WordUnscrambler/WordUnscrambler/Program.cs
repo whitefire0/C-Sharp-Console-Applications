@@ -6,7 +6,7 @@ namespace WordUnscrambler
     {
         static void Main(string[] args)
         {
-            bool continueWordUnscramble = true;
+            bool continueProgram = true;
             do
             {
                 Console.WriteLine("Please enter the option - M for manual, F for file");
@@ -27,27 +27,27 @@ namespace WordUnscrambler
                         break;
                 }
 
-                var continueWordUnscrambleDecision = string.Empty;
+                var continueDecision = string.Empty;
                 do
                 {
                     Console.WriteLine("Do you want to continue the program? (y/n");
-                    continueWordUnscrambleDecision = (Console.ReadLine().ToUpper() ?? string.Empty);
+                    continueDecision = (Console.ReadLine().ToUpper() ?? string.Empty);
 
-                } while (!continueWordUnscrambleDecision.Equals("Y", StringComparison.OrdinalIgnoreCase) && !continueWordUnscrambleDecision.Equals("N", StringComparison.OrdinalIgnoreCase));
+                } while (!continueDecision.Equals("Y", StringComparison.OrdinalIgnoreCase) && !continueDecision.Equals("N", StringComparison.OrdinalIgnoreCase));
 
-                continueWordUnscramble = continueWordUnscrambleDecision.Equals("Y", StringComparison.OrdinalIgnoreCase);
+                continueProgram = continueDecision.Equals("Y", StringComparison.OrdinalIgnoreCase);
 
-            } while (continueWordUnscramble);
+            } while (continueProgram);
         }
 
         private static void ExecuteScrambledWordsManual()
         {
-            throw new NotImplementedException();
+
         }
 
         private static void ExecuteScrambledWordsInFile()
         {
-            throw new NotImplementedException();
+
         }
     }
 }
