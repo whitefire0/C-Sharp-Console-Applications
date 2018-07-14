@@ -26,6 +26,17 @@ namespace WordUnscrambler
                         Console.WriteLine("Option was not recognised");
                         break;
                 }
+
+                var continueWordUnscrambleDecision = string.Empty;
+                do
+                {
+                    Console.WriteLine("Do you want to continue the program? (y/n");
+                    continueWordUnscrambleDecision = (Console.ReadLine().ToUpper() ?? string.Empty);
+
+                } while (!continueWordUnscrambleDecision.Equals("Y", StringComparison.OrdinalIgnoreCase) && !continueWordUnscrambleDecision.Equals("N", StringComparison.OrdinalIgnoreCase));
+
+                continueWordUnscramble = continueWordUnscrambleDecision.Equals("Y", StringComparison.OrdinalIgnoreCase);
+
             } while (continueWordUnscramble);
         }
 
