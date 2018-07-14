@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using WordUnscrambler.Data;
+using WordUnscrambler.Workers;
 
 namespace WordUnscrambler
 {
     class Program
     {
+        private static readonly FileReader _fileReader = new FileReader();
+        private static readonly WordMatcher _wordMatcher = new WordMatcher();
+        private const string wordListFileName = "wordList.txt";
+
         static void Main(string[] args)
         {
             bool continueProgram = true;
