@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace WordUnscrambler
 {
@@ -32,8 +35,9 @@ namespace WordUnscrambler
                 {
                     Console.WriteLine("Do you want to continue the program? (y/n");
                     continueDecision = (Console.ReadLine().ToUpper() ?? string.Empty);
-
-                } while (!continueDecision.Equals("Y", StringComparison.OrdinalIgnoreCase) && !continueDecision.Equals("N", StringComparison.OrdinalIgnoreCase));
+                } while (
+                    !continueDecision.Equals("Y", StringComparison.OrdinalIgnoreCase) && 
+                    !continueDecision.Equals("N", StringComparison.OrdinalIgnoreCase));
 
                 continueProgram = continueDecision.Equals("Y", StringComparison.OrdinalIgnoreCase);
 
@@ -42,12 +46,35 @@ namespace WordUnscrambler
 
         private static void ExecuteScrambledWordsManual()
         {
-
+            var manualInput = Console.ReadLine() ?? string.Empty;
+            string[] scrambledWords = manualInput.Split(',');
+            DisplayMatchedUnscrambledWords();
         }
 
         private static void ExecuteScrambledWordsInFile()
         {
+            var filename = Console.ReadLine() ?? string.Empty;
+            string[] scrambledWords = _fileReader.Read(filename);
+            DisplayMatchedUnscrambledWords();
+        }
 
+        private static void DisplayMatchedUnscrambledWords([]string scrambledWords)
+        {
+            string[] wordList = _fileReader.Read(wordListFileName);
+
+            List<MatchedWord> matchedWords = _wordMatcher.Match(scrambledWords, wordList);
+
+            if (matchedWords.Any())
+            {
+                foreach (var matchedWord in matchedWords)
+                {
+                    Console.WriteLine($"Match found for {matchedWord.ScrambledWord} {matchedWord.Word}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No matches have been found.");
+            }
         }
     }
 }
