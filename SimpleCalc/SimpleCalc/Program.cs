@@ -6,7 +6,23 @@ namespace SimpleCalc
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Input Converter inputConverter = new InputConverter();
+            CalculatorEngine calculatorEngine = new CalculatorEngine();
+
+            double firstNumber = inputConverter.ConvertInputToNumeric(Console.ReadLine());
+            double secondNumber = inputConverter.ConvertInputToNumeric(Console.ReadLine());
+            string operation = Console.ReadLine();
+
+            double result = calculatorEngine.Calculate(operation, firstNumer, secondNumber);
+            Console.WriteLine(result);
+        }
+    }
+
+    public class InputCoverter
+    {
+        public double ConvertInputToNumeric(string argTextInput)
+        {
+
         }
     }
 }
