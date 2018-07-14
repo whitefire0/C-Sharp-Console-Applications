@@ -16,5 +16,14 @@ namespace SimpleCalc.Test.Unit
             double result = _calclatorEngine.Calculate("add", number1, number2);
             Assert.AreEqual(3, result);
         }
+
+        [TestMethod]
+        public void AddsTwoNumbersAndReturnsValidResultForSymbolOperation()
+        {
+            int number1 = 1;
+            int number2 = 2;
+            double result = _calclatorEngine.Calculate("+", number1, number2);
+            Assert.AreEqual(3, result);
+        }
     }
 }
