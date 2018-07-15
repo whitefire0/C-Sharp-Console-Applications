@@ -2,7 +2,7 @@
 {
     public class Constants
     {
-        public const string OptionsOnHowToEnterScrambledWords ="Enter scrambed word(s) manually or as a file: F- file/M - manual";
+        public const string OptionsOnHowToEnterScrambledWords ="Enter scrambed word(s) manually or as a file: F - file/M - manual";
         public const string OptionsOnContinuingTheProgram = "Would you like to continue? y/n";
 
         public const string EnterScrambledWordsViaFile = "Enter filename (must be in the exe root folder): ";
